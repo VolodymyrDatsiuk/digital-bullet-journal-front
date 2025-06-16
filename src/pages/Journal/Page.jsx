@@ -10,9 +10,46 @@ const Page = React.forwardRef(({ content }, ref) => {
   // TODO define whether page is on left side or right side
   // TODO add shadow to the page based on side to replicate real book
 
+  const modules = {
+    toolbar: [
+      [{ font: [] }, { size: [] }],
+      ["bold", "italic", "underline", "strike"],
+      [{ color: [] }, { background: [] }],
+      [{ script: "sub" }, { script: "super" }],
+      [{ header: "1" }, { header: "2" }, "blockquote", "code-block"],
+      [{ list: "ordered" }, { list: "bullet" }],
+      [{ indent: "-1" }, { indent: "+1" }, { align: [] }],
+      ["link", "image", "video", "formula"],
+      ["clean"], // remove formatting
+    ],
+  };
+
+  const formats = [
+    "font",
+    "size",
+    "bold",
+    "italic",
+    "underline",
+    "strike",
+    "color",
+    "background",
+    "script",
+    "header",
+    "blockquote",
+    "code-block",
+    "list",
+    "bullet",
+    "indent",
+    "align",
+    "link",
+    "image",
+    "video",
+    "formula",
+  ];
+
   return (
     <div className="w-full h-full demoPage" ref={ref}>
-      <ReactQuill theme="snow" value={value} onChange={setValue} />
+      <ReactQuill theme="snow" value={value} onChange={setValue} modules={modules} formats={formats} />
       {/* <p>Page number: {number}</p> */}
     </div>
   );
